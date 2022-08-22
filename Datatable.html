@@ -1,0 +1,158 @@
+ <html>
+ <head>
+  <link rel="stylesheet" href="MobileResponsive.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.18/css/jquery.dataTables.min.css">
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.15/api/row().show().js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	 
+</head> 
+<title>Jobs</title>
+<table role="table" id="testgrid">
+  <thead role="rowgroup">
+    <tr role="row">
+      <th role="columnheader">Open</th>
+      <th role="columnheader">Contacted</th>
+      <th role="columnheader">Written Test</th>
+      <th role="columnheader">Technical Round</th>
+      <th role="columnheader">Culture Fit Round</th>
+      
+      
+	 
+	
+    </tr>
+  </thead>
+   
+</table>
+<input type = "submit" name = "submit" id="submitButtonn" value = "Add"/>
+<input type = "reset" onclick="clearfun();" name = "clear" id="clearButton" value = "Clear"/>
+<div class="modal fade" id="mblModal" role="dialog">
+        <div class="modal-dialog" style="width:87%;height: 130%;left: 10%;top: 10px;">
+                <div class="modal-content" style="width:80%;height: 95%;left: -3%;">
+                    <div>
+                      <button type="button" class="close"  style="width:15%;height: 15%;left: -3%;top: 10px;bottom: 500px;color:#f40610;padding: 20px;opacity: .9;" data-bs-dismiss="modal">&times;</button>         
+                     </div>
+					 
+					 <div class="col-lg-12">
+                            <form id="myForm" class="form-horizontal" style="margin-top: 30px;">
+							<div>
+							 <th role="columnheader">Open</th>
+      
+							 <tr>
+							 <td>
+							 
+							<label class="col-sm-1 control-label" style="text-align: left;padding-top: 0px;margin-left: -2px;">Open</label></td>
+							<td>
+							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="name"></span>	
+							</td>
+							 </tr>
+							 </div>
+							 <div>
+							  <tr>
+							 <td>
+							 
+							<label class="col-sm-1 control-label" style="text-align: left;padding-top: 0px;margin-left: -2px;">Contacted</label></td>
+							<td>
+							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="Height"></span>	
+							</td>
+							 </tr>
+							 
+							</div>
+							 <div>
+							  <tr>
+							 <td>
+							 
+							<label class="col-sm-1 control-label" style="text-align: left;padding-top: 0px;margin-left: -2px;">Written Test</label></td>
+							<td>
+							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="Mass"></span>	
+							</td>
+							 </tr>
+							 
+							</div>
+							
+							<div>
+							  <tr>
+							 <td>
+							 
+							<label class="col-sm-1 control-label" style="text-align: left;padding-top: 0px;margin-left: -2px;">Technical Round</label></td>
+							<td>
+							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="Haircolor"></span>	
+							</td>
+							 </tr>
+							 
+							</div>
+							<div>
+							  <tr>
+							 <td>
+							 
+							<label class="col-sm-1 control-label" style="text-align: left;padding-top: 0px;margin-left: -2px;">Culture Fit Round</label></td>
+							<td>
+							 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span id="Skincolor"></span>	
+							</td>
+							 </tr>
+							 
+							</div>
+							<div>
+							  <tr>
+							 
+							</div>
+							
+					       </form>
+					 </div>
+				 </div>
+          </div>
+</div>		  
+ </html>
+ <script>
+ var count=1;
+ $(document).ready(function() {
+ var testgrid=$('#testgrid').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+		"overflow-x":"auto",
+        "sDom": 'lfrtip'
+    }); 
+	
+	
+	$('#submitButtonn').on('click', function () {
+      
+	testgrid.row.add(['<input type="text" draggable="true" ondragstart="drag(event)" id="open-'+count+'"/>',
+
+'<input type="text" draggable="true" ondragstart="drag(event)" id="Contacted-'+count+'" />',
+
+
+'<input type="text" draggable="true" ondragstart="drag(event)" id="WrittenTest-'+count+'" />',
+
+'<input type="text" draggable="true" ondragstart="drag(event)" id="TechnicalRound-'+count+'" />',
+
+'<input type="text"  draggable="true" ondragstart="drag(event)" id="CultureFitRound-'+count+'" />'
+
+
+
+										  ]).draw(false);
+										  
+	
+
+		count++;								 
+										  
+	 });									  
+	 
+	
+clearfun=function(){
+$('#testgrid').dataTable().fnClearTable();
+
+}	
+drag = function (ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+
+    }
+	 
+});	
+	</script>
